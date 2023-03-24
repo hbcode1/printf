@@ -7,13 +7,10 @@
  *
  * Description: Takes in a string @format and variable inputs which change
  * The string into whatever formatted that is prescribed
- * Return: integer value describing nuber of chars printed
+ * Return: integer value describing number of chars printed
  */
 int _printf(const char *format, ...)
 {
-	/*
-	 * Define all functions here and have ways to call them too
-	 */
 	int i = 0, j = 0, len = 0;
 	va_list args;
 	_printf_case_t cases[] = {
@@ -24,5 +21,28 @@ int _printf(const char *format, ...)
 		{0, NULL},
 	};
 
+	va_start(args, format);
+	while (format[i] != '\0' && format != NULL)
+	{
+		if (format[i] == '%')
+		{
+			i++;
+			while (cases[j].id != format[i] && cases[j].id)
+				j++;
+			if (j < 4)
+			{
+				if (format[i] == '0' && format[i + 1])
+					len += cases[j].print_case(&args);
+			}
+		}
+		else
+		{
+			_putchar(*format);
+			len++;
+		}
+		j = 0, i++;
+	}
+
+	va_end(args);
 	return (len);
 }

@@ -4,6 +4,7 @@
 #include <stddef.h>
 #include <stdlib.h>
 #include <stdarg.h>
+#include <string.h>
 
 /**
  * struct _printf_case - a structure that holds id and function
@@ -15,7 +16,7 @@
 typedef struct _printf_case
 {
 	char id;
-	void (*print_case)(va_list *arg);
+	int (*print_case)(va_list *arg);
 } _printf_case_t;
 
 int _putchar(char c);
