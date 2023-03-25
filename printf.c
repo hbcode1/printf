@@ -29,16 +29,16 @@ int _printf(const char *format, ...)
 			i++;
 			while (cases[j].id != format[i] && cases[j].id)
 				j++;
-			if (j < 5)
+			if (j < 4)
 			{
-				if (format[i + 1] == '0' && format[i + 2] == 'x')
+				if (format[i] == '0' && format[i + 1] == 'x')
 					len += cases[j].print_case(&args, 2);
-				else if (format[i + 1] == '0')
+				else if (format[i] == '0')
 					len += cases[j].print_case(&args, 1);
 				else
 					len += cases[j].print_case(&args, 0);
 			}
-			else
+			else if (j == 4)
 			{
 				_putchar(format[i]);
 				len++;
