@@ -16,14 +16,14 @@
 typedef struct _printf_case
 {
 	char id;
-	int (*print_case)(va_list *arg, int specifier, int width);
+	int (*print_case)(va_list *arg, int specifier);
 } _printf_case_t;
 
 int _putchar(char c);
 int _printf(const char *format, ...);
 _printf_case_t *handle_cases();
-int print_case_char(va_list *arg, int specifier, int width);
-int print_case_str(va_list *arg, int specifier, int width);
-int print_case_int(va_list *arg, int specifier, int width);
+int print_case_char(va_list *arg, int specifier);
+int print_case_str(va_list *arg, int specifier);
+int print_case_int(va_list *arg, int specifier);
 
 #endif /* end def main.h */

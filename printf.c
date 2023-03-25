@@ -11,7 +11,7 @@
  */
 int _printf(const char *format, ...)
 {
-	int i = 0, j = 0, len = 0, specifier = 0, width = 0;
+	int i = 0, j = 0, len = 0, specifier = 0;
 	va_list args;
 	_printf_case_t *cases = handle_cases();
 	va_start(args, format);
@@ -20,23 +20,21 @@ int _printf(const char *format, ...)
 		if (format[i] == '%')
 		{
 			i++;
-			if (format[i] == '0' && format[i + 1] == 'x')
-				specifier = 16, i += 2;
-			else if (format[i] == '0' && format[i + 1] != 'x')
-				specifier = 8, i++;
-			else if (format[i] >= '0' && format[i] <= '9')
-				width = format[i] - 48, i++;
 			while (cases[j].id != format[i] && cases[j].id)
 				j++;
-			if (j < 5)
+			if (j < 9)
 			{
-				if (j == 4)
-					specifier = 2;
-				len += cases[j].print_case(&args, specifier, width);
+				specifier = ((j == 4)	? 2
+							 : (j == 5) ? 1
+							 : (j == 6) ? 8
+							 : (j == 7) ? 16
+							 : (j == 8) ? 17
+										: 0);
+				len += cases[j].print_case(&args, specifier);
 			}
-			else if (j == 5 && format[i - 1] == '%' && format[i] != '%')
+			else if (j == 9 && format[i - 1] == '%' && format[i] != '%')
 				len += (_putchar(format[i - 1])) + _putchar(format[i]);
-			else if (j == 5)
+			else if (j == 9)
 				len += _putchar(format[i]);
 		}
 		else

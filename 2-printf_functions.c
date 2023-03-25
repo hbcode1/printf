@@ -8,14 +8,18 @@
  */
 _printf_case_t *handle_cases()
 {
-	int i, len = 6;
+	int i, len = 10;
 	_printf_case_t *c;
 	_printf_case_t cases[] = {
 		{'c', print_case_char},
+		{'s', print_case_str},
 		{'i', print_case_int},
 		{'d', print_case_int},
-		{'s', print_case_str},
 		{'b', print_case_int},
+		{'u', print_case_int},
+		{'o', print_case_int},
+		{'x', print_case_int},
+		{'X', print_case_int},
 		{0, NULL},
 	};
 
