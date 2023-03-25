@@ -7,6 +7,7 @@
  */
 int main(void)
 {
-	printf("%d %i", 12, 0x12);
+	printf("%d %i\n", 12.0, 12.0);
+	printf("%04c\n", 78);
 	return (0);
 }
