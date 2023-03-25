@@ -15,8 +15,8 @@ int _printf(const char *format, ...)
 	va_list args;
 	_printf_case_t cases[] = {
 		{'c', print_case_char},
-		{'d', print_case_int},
-		{'i', print_case_dec},
+		{'i', print_case_int},
+		{'d', print_case_dec},
 		{'s', print_case_str},
 		{0, NULL},
 	};
@@ -29,15 +29,24 @@ int _printf(const char *format, ...)
 			i++;
 			while (cases[j].id != format[i] && cases[j].id)
 				j++;
-			if (j < 4)
+			if (j < 5)
 			{
-				if (format[i] == '0' && format[i + 1])
-					len += cases[j].print_case(&args);
+				if (format[i + 1] == '0' && format[i + 2] == 'x')
+					len += cases[j].print_case(&args, 2);
+				else if (format[i + 1] == '0')
+					len += cases[j].print_case(&args, 1);
+				else
+					len += cases[j].print_case(&args, 0);
+			}
+			else
+			{
+				_putchar(format[i]);
+				len++;
 			}
 		}
 		else
 		{
-			_putchar(*format);
+			_putchar(format[i]);
 			len++;
 		}
 		j = 0, i++;
