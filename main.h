@@ -15,8 +15,12 @@ typedef unsigned int u_i;
 typedef unsigned char u_c;
 
 int _printf(const char *format, ...);
-int _putchar(char);
-void print_s(char *);
-void print_i_d(int);
+int _putchar(char c);
+int *print_string(char *str, int *len, int t);
+int *print_integer(int n, int *len, int base);
+int *print_unsigned(u_i n, int *len, int base);
+void print_addr(void *addr);
 int num_len(unsigned int n);
+void rev_str(char *str, int a, int z);
+char *itoa(u_i n, char *s, int b);
 #endif /* end def main.h */

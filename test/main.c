@@ -41,6 +41,38 @@ int main(void)
 	_printf("Unknown:[%r]\n");
 /*	printf("Unknown:[%r]\n");
 */
-	_printf("******************EXTRA-TESTS***********************\n");
+	_printf("******************EXTRA-TESTS***********************\n\n");
+	_printf("# Return the exact length of printed integer plus format\n\n");
+
+	len = _printf("Length:[%d, %i]\n", 456789231, -456789231);
+	len2= printf("Length:[%d, %i]\n\n", 456789231, -456789231);
+
+	_printf("Len:[%d]\n", len);
+	printf("Len:[%d]\n\n", len2);
+
+	_printf("# Return the exact length of printed usigned plus format\n\n");
+	len = _printf("Unsigned hexadecimal:[%d, %i]\n", ui, ui);
+	len2 = printf("Unsigned hexadecimal:[%d, %i]\n\n", ui, ui);
+
+	_printf("Len:[%d]\n", len);
+	printf("Len:[%d]\n\n", len2);
+
+	_printf("# Return the exact length of printed string plus format\n\n");
+
+	len = _printf("String:[%s]\n", "I am a string !");
+	len2 = printf("String:[%s]\n\n", "I am a string !");
+	
+	_printf("Len:[%d]\n", len);
+	printf("Len:[%d]\n\n", len2);
+
+	_printf("Handle custom conversion specifier b (binary)\n\n");
+	_printf("98 to binary [%b]\n\n", 98);
+
+	_printf("# Task 5 Non printable characters (0 < ASCII value < 32 or >= 127) are printed this way: \\x , followed by the ASCII code value in hexadecimal (upper case - always 2 characters)\n\n");
+
+	/* _printf("%S","\ta\bg\n"); */
+	_printf("%S\n", "Best\nSchool");
+	_printf("\n");
+	_printf("%S\n", "Best\tSchool");
 	return (0);
 }

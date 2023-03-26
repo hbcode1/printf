@@ -38,14 +38,48 @@ int _printf(const char *format, ...)
 			/* print string */
 			case 's':
 				str = va_arg(argp, char *);
-				print_s(str);
+				print_string(str, &len, 0);
+				len++;
+				break;
+			/* print costum string */
+			case 'S':
+				str = va_arg(argp, char *);
+				print_string(str, &len, 1);
+				len++;
 				break;
 			/* print integers */
 			case 'i':
-				print_i_d(va_arg(argp, int));
+				print_integer(va_arg(argp, int), &len, 10);
 				break;
 			case 'd':
-				print_i_d(va_arg(argp, int));
+				print_integer(va_arg(argp, int),&len, 10);
+				len++;
+				break;
+			case 'b':
+				print_integer(va_arg(argp, int),&len, 2);
+				len++;
+				break;
+			/* print unsigneds*/
+			case 'u':
+				print_unsigned(va_arg(argp, u_i),&len, 10);
+				len++;
+				break;
+			case 'o':
+				print_unsigned(va_arg(argp, u_i),&len, 8);
+				len++;
+				break;
+			case 'x':
+				print_unsigned(va_arg(argp, u_i),&len, 16);
+				len++;
+				break;
+			case 'X':
+				print_unsigned(va_arg(argp, u_i),&len, 17);
+				len++;
+				break;
+			/* print address*/
+			case 'p':
+				_putchar(*fmt);
+				len++;
 				break;
 			/* print precent */
 			case '%':
