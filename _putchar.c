@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 #include "main.h"
+=======
+#include <unistd.h>
+>>>>>>> dev-mk
 
 /**
  * _putchar - writes the character c to stdout

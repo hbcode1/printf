@@ -17,11 +17,13 @@ int main(void)
 	len = _printf("Let's try to printf a simple sentence.\n");
 	len2 = printf("Let's try to printf a simple sentence.\n");
 	ui = (unsigned int)INT_MAX + 1024;
-	addr = (void *)0x7ffe637541f0;
+	addr = (void *)0x7ffe6375;
 	_printf("Length:[%d, %i]\n", len, len);
 	printf("Length:[%d, %i]\n", len2, len2);
 	_printf("Negative:[%d]\n", -762534);
 	printf("Negative:[%d]\n", -762534);
+	_printf("Binary of 98:[%b]\n", 98);
+	printf("Binary of 98:[1100010]\n");
 	_printf("Unsigned:[%u]\n", ui);
 	printf("Unsigned:[%u]\n", ui);
 	_printf("Unsigned octal:[%o]\n", ui);
@@ -39,6 +41,7 @@ int main(void)
 	_printf("Len:[%d]\n", len);
 	printf("Len:[%d]\n", len2);
 	_printf("Unknown:[%r]\n");
+<<<<<<< HEAD
 /*	printf("Unknown:[%r]\n");
 */
 	_printf("******************EXTRA-TESTS***********************\n\n");
@@ -74,5 +77,8 @@ int main(void)
 	_printf("%S\n", "Best\nSchool");
 	_printf("\n");
 	_printf("%S\n", "Best\tSchool");
+=======
+	printf("Unknown:[%%r]\n");
+>>>>>>> dev-mk
 	return (0);
 }
