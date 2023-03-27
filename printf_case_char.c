@@ -2,6 +2,7 @@
 /**
  * print_case_char - prints case for format of c
  * @arg: list of arguments
+ * @specifier: format specifier
  *
  * Return: integer showing number of chars written
  */
