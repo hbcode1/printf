@@ -33,7 +33,6 @@ int _printf(const char *format, ...);
 _printf_case_t *handle_cases();
 int print_case_char(va_list *arg, int specifier);
 int print_case_str(va_list *arg, int specifier);
-=======
 
 /*Task 1*/
 char *itoa(u_i n, char *str, int b);
