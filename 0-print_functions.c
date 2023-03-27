@@ -39,7 +39,7 @@ int print_case_str(va_list *arg, int option)
 	if (option == 0)
 	{
 		if (temp == NULL)
-			temp = "(nil)";
+			temp = "(null)";
 		while (*temp)
 			len += _putchar(*temp++);
 	}
