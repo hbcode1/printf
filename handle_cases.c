@@ -19,6 +19,7 @@ _printf_case_t *handle_cases()
 		{'o', print_case_int},
 		{'x', print_case_int},
 		{'X', print_case_int},
+		{'p', print_case_ptr},
 		{0, NULL},
 	};
 	c = malloc(sizeof(_printf_case_t) * len);

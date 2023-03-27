@@ -12,7 +12,7 @@
 /**
  * struct _printf_case - a structure that holds id and function
  * @id: identifier character
- * @_printf_case: function which handles case
+ * @print_case: function which handles case
  *
  * typedef _printf_case_t : type for printcase structure
  */
@@ -40,4 +40,7 @@ int print_case_int(va_list *arg, int specifier);
 
 /*Task 4*/
 void print_buffer(char buffer[], int *index);
+
+/*Task 6*/
+int print_case_ptr(va_list *arg, int specifier);
 #endif
