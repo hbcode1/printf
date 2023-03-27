@@ -32,9 +32,6 @@ int print_case_str(va_list *arg, int option)
 	char *temp;
 	int len = 0;
 
-	temp = malloc(sizeof(char) * (100));
-	if (temp == NULL)
-		return (0);
 	temp = va_arg(*arg, char *);
 	if (option == 0)
 	{
