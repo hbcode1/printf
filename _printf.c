@@ -29,17 +29,18 @@ int _printf(const char *format, ...)
 			}
 			while (cases[j].id != format[i] && cases[j].id)
 				j++;
-			if (j < 9)
+			if (j < 10)
 			{
 				option = ((j == 4)	? 2
 						: (j == 5) ? 1
 						: (j == 6) ? 8
 						: (j == 7) ? 16
 						: (j == 8) ? 17
+						: (j == 9) ? 3
 						:0);
 				len += cases[j].print_case(&args, option);
 			}
-			if (j >= 9)
+			if (j >= 10)
 			{
 				len += _putchar('%');
 				len += _putchar(format[i]);
