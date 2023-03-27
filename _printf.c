@@ -50,15 +50,9 @@ int _printf(const char *format, ...)
 						: (j == 8) ? 17
 						: (j == 9) ? 3
 						:0);
-				option = ((j == 4)	 ? 2
-						  : (j == 5) ? 1
-						  : (j == 6) ? 8
-						  : (j == 7) ? 16
-						  : (j == 8) ? 17
-									 : 0);
 				len += cases[j].print_case(&args, option);
 			}
-			if (j >= 10)
+			if (j >= 11)
 			{
 				len += _putchar('%');
 				len += _putchar(format[i]);

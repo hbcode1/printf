@@ -1,6 +1,6 @@
 #include "main.h"
 /**
- * print_case_str - prints case for format of s
+ * print_case_cstr - prints case for format of s
  * @arg: list of arguments
  * @option: option for the secifier
  *
@@ -13,7 +13,7 @@ int print_case_cstr(va_list *arg, int option)
 
 	hex = malloc(sizeof(char) * 3);
 	if (hex == NULL)
-		return(0);
+		return (0);
 
 	temp = va_arg(*arg, char *);
 	if (option == 3)
@@ -30,9 +30,9 @@ int print_case_cstr(va_list *arg, int option)
 				{
 					len += _putchar('0');
 				}
-				itoa(*temp,hex,17);
+				itoa(*temp, hex, 17);
 				{
-					while(*hex != '\0')
+					while (*hex != '\0')
 					{
 						len += _putchar(*hex);
 						hex++;
