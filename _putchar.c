@@ -1,9 +1,5 @@
-<<<<<<< HEAD
-#include "main.h"
-=======
 #include <unistd.h>
->>>>>>> dev-mk
-
+#include "main.h"
 /**
  * _putchar - writes the character c to stdout
  * @c: The character to print

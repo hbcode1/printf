@@ -40,15 +40,12 @@ int main(void)
 	len2 = printf("Percent:[%%]\n");
 	_printf("Len:[%d]\n", len);
 	printf("Len:[%d]\n", len2);
-	_printf("Unknown:[%r]\n");
-<<<<<<< HEAD
-/*	printf("Unknown:[%r]\n");
-*/
+	printf("Unknown:[%% r]\n");
 	_printf("******************EXTRA-TESTS***********************\n\n");
 	_printf("# Return the exact length of printed integer plus format\n\n");
 
 	len = _printf("Length:[%d, %i]\n", 456789231, -456789231);
-	len2= printf("Length:[%d, %i]\n\n", 456789231, -456789231);
+	len2 = printf("Length:[%d, %i]\n\n", 456789231, -456789231);
 
 	_printf("Len:[%d]\n", len);
 	printf("Len:[%d]\n\n", len2);
@@ -64,7 +61,7 @@ int main(void)
 
 	len = _printf("String:[%s]\n", "I am a string !");
 	len2 = printf("String:[%s]\n\n", "I am a string !");
-	
+
 	_printf("Len:[%d]\n", len);
 	printf("Len:[%d]\n\n", len2);
 
@@ -77,8 +74,5 @@ int main(void)
 	_printf("%S\n", "Best\nSchool");
 	_printf("\n");
 	_printf("%S\n", "Best\tSchool");
-=======
-	printf("Unknown:[%%r]\n");
->>>>>>> dev-mk
 	return (0);
 }
