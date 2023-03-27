@@ -18,6 +18,10 @@ typedef struct _printf_case
 	char id;
 	int (*print_case)(va_list *arg, int specifier);
 } _printf_case_t;
+/**
+ * u_i - typedef for unsigned int
+ */
+typedef unsigned int u_i;
 /*
  * Description: function prototypes
  */
@@ -26,5 +30,6 @@ int _printf(const char *format, ...);
 _printf_case_t *handle_cases();
 int print_case_char(va_list *arg, int specifier);
 int print_case_str(va_list *arg, int specifier);
-
+char *itoa(u_i n, char *str, int b);
+int print_case_int(va_list *arg, int specifier);
 #endif
