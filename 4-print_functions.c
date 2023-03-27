@@ -9,9 +9,14 @@
  */
 void print_buffer(char buffer[], int *index)
 {
+	int i = 0;
+
 	if (*index > 0)
 	{
-		/*print all chars in the buffer using a loop*/
+		while (i < *index)
+		{
+			_putchar(buffer[i++]);
+		}
 	}
 	*index = 0;
 }

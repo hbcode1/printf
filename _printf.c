@@ -55,7 +55,7 @@ int _printf(const char *format, ...)
 			len += _putchar(format[i]);
 		j = 0, i++, option = 0;
 	}
-
+	print_buffer(buffer, &k);
 	va_end(args);
 	return (len);
 }
