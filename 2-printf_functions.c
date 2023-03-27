@@ -20,6 +20,12 @@ _printf_case_t *handle_cases()
 		{'o', print_case_int},
 		{'x', print_case_int},
 		{'X', print_case_int},
+		{'S', print_case_str},
+		{'p', print_case_int},
+		{'+', print_case_str},
+		{' ', print_case_str},
+		{'#', print_case_str},
+		{'R', print_case_str},
 		{0, NULL},
 	};
 

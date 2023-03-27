@@ -5,6 +5,7 @@
 #include <stdlib.h>
 #include <stdarg.h>
 #include <string.h>
+#include <stddef.h>
 
 /**
  * struct _printf_case - a structure that holds id and function
