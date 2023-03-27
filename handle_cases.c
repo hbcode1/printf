@@ -7,7 +7,7 @@
  */
 _printf_case_t *handle_cases()
 {
-	int i, len = 10;
+	int i, len = 11;
 	_printf_case_t *c;
 	_printf_case_t cases[] = {
 		{'c', print_case_char},
@@ -20,6 +20,7 @@ _printf_case_t *handle_cases()
 		{'x', print_case_int},
 		{'X', print_case_int},
 		{'S', print_case_cstr},
+		{'p', print_case_ptr},
 		{0, NULL},
 	};
 	c = malloc(sizeof(_printf_case_t) * len);
