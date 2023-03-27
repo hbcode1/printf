@@ -11,16 +11,28 @@
  */
 int _printf(const char *format, ...)
 {
-	int i = 0, j = 0, len = 0, option = 0;
+	int i = 0, j = 0, k = 0, len = 0, option = 0;
 	va_list args;
 	_printf_case_t *cases = handle_cases();
+	char buffer[BUFF_SIZE];
+
+	if (format == NULL)
+		return (-1);
 
 	va_start(args, format);
 
-	while (format != NULL && format[i] != '\0')
+	while (format[i] != '\0')
 	{
-		if (format[i] == '%')
+		if (format[i] != '%')
 		{
+			buffer[k++] = format[i];
+			if (k == BUFF_SIZE)
+				print_buffer(buffer, &k);
+			len++;
+		}
+		else if (format[i] == '%')
+		{
+			print_buffer(buffer, &k);
 			i++;
 			if (format[i] == '%')
 			{
@@ -50,7 +62,7 @@ int _printf(const char *format, ...)
 			len += _putchar(format[i]);
 		j = 0, i++, option = 0;
 	}
-
+	print_buffer(buffer, &k);
 	va_end(args);
 	return (len);
 }
