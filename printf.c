@@ -21,7 +21,7 @@ int _printf(const char *format, ...)
 	{
 		if (format[i] == '%')
 		{
-			i++, len++;
+			i++;
 			while (cases[j].id != format[i] && cases[j].id)
 				j++;
 			if (j == 10)
@@ -29,7 +29,7 @@ int _printf(const char *format, ...)
 				len += _putchar('%'), i++;
 				continue;
 			}
-			if (j < 11)
+			if (j < 12 && j != 10)
 			{
 				specifier = ((j == 4)	? 2
 							 : (j == 5) ? 1
@@ -39,8 +39,6 @@ int _printf(const char *format, ...)
 										: 0);
 				len += cases[j].print_case(&args, specifier);
 			}
-			else if (j == 9)
-				len += _putchar(format[i]);
 		}
 		else
 			len += _putchar(format[i]);

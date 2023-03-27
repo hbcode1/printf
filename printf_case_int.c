@@ -63,7 +63,6 @@ int print_case_int(va_list *arg, int specifier)
 	}
 	if (specifier == 8 || specifier == 16 || specifier == 17)
 	{
-
 		num2 = va_arg(*arg, int);
 		temp = itoa(num2, temp, specifier);
 		if (specifier == 17)

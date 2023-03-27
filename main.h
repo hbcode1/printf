@@ -32,6 +32,7 @@ _printf_case_t *handle_cases();
 int print_case_char(va_list *arg, int specifier);
 int print_case_str(va_list *arg, int specifier);
 int print_case_int(va_list *arg, int specifier);
+int print_case_addr(va_list *arg, int specifier);
 int _printf(const char *format, ...);
 int _putchar(char c);
 int *print_string(char *str, int *len, int t);

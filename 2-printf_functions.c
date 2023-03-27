@@ -21,7 +21,7 @@ _printf_case_t *handle_cases()
 		{'X', print_case_int},
 		{'S', print_case_str},
 		{'%', print_case_char},
-		{'p', print_case_int},
+		{'p', print_case_addr},
 		{'+', print_case_str},
 		{' ', print_case_str},
 		{'#', print_case_str},
