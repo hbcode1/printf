@@ -29,9 +29,13 @@ int _printf(const char *format, ...)
 			}
 			while (cases[j].id != format[i] && cases[j].id)
 				j++;
-			if (j < 3)
+			if (j < 2)
 			{
 				len += cases[j].print_case(&args, option);
+			}
+			if (j == 2)
+			{
+				len += _putchar(format[i]);
 			}
 		}
 		else
