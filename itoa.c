@@ -1,9 +1,16 @@
 #include "main.h"
-
+/**
+ * rev_str - reverses a string
+ * @str: string
+ * @a: start index
+ * @z: stop index
+ *
+ * Return: Nothing
+ */
 void rev_str(char *str, int a, int z)
 {
     char tmp;
-    
+
     if (a >= z)
     {
         return;
@@ -16,10 +23,18 @@ void rev_str(char *str, int a, int z)
     z--;
     rev_str(str, a, z);
 }
+/**
+ * itoa - converts int to array of chars
+ * @n: unsigned integer n
+ * @str: string to put number inside of
+ * @b: base to convert to
+ *
+ * Return: character pointer string
+ */
 char *itoa(u_i n, char *str, int b)
 {
     int i = 0, r;
-    
+
     if (n == 0)
     {
         str[i] = '0';

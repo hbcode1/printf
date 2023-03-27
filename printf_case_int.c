@@ -9,6 +9,7 @@
 void capitalise_chars(char *str)
 {
 	int i = 0;
+
 	for (i = 0; i < 8; i++)
 	{
 		if (str[i] > 96 && str[i] < 123)

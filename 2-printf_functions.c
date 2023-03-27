@@ -2,7 +2,6 @@
 
 /**
  * handle_cases - returns a pointer to some cases
- * @c: string at that point
  *
  * Return: integer for
  */
@@ -21,6 +20,7 @@ _printf_case_t *handle_cases()
 		{'x', print_case_int},
 		{'X', print_case_int},
 		{'S', print_case_str},
+		{'%', print_case_char},
 		{'p', print_case_int},
 		{'+', print_case_str},
 		{' ', print_case_str},
