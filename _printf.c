@@ -41,12 +41,13 @@ int _printf(const char *format, ...)
 			}
 			while (cases[j].id != format[i] && cases[j].id)
 				j++;
-			if (j < 2)
+			if (j < 4)
 			{
 				len += cases[j].print_case(&args, option);
 			}
-			if (j == 2)
+			if (j >= 4)
 			{
+				len += _putchar('%');
 				len += _putchar(format[i]);
 			}
 		}
