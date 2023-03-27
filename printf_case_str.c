@@ -2,6 +2,7 @@
 /**
  * print_case_str - prints case for format of s
  * @arg: list of arguments
+ * @specifier: format specifier
  *
  * Return: integer showing number of chars written
  */
