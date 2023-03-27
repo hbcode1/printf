@@ -32,7 +32,7 @@ void capitalise_chars(char *str)
  *				17 for capitalised hex
  * Return: integer of number of things writted
  */
-int print_case_int(va_list *arg, int specifier)
+int print_case_int(va_list *arg, int specifier, int flags)
 {
 	int num = 0, len = 0;
 	unsigned int num2 = 0;

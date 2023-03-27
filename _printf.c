@@ -11,7 +11,7 @@
  */
 int _printf(const char *format, ...)
 {
-	int i = 0, j = 0, k = 0, len = 0, option = 0;
+	int i = 0, j = 0, k = 0, len = 0, option = 0, flags = 0;
 	va_list args;
 	_printf_case_t *cases = handle_cases();
 	char buffer[BUFF_SIZE];
@@ -43,14 +43,15 @@ int _printf(const char *format, ...)
 				j++;
 			if (j < 11)
 			{
-				option = ((j == 4)	? 2
-						: (j == 5) ? 1
-						: (j == 6) ? 8
-						: (j == 7) ? 16
-						: (j == 8) ? 17
-						: (j == 9) ? 3
-						:0);
-				len += cases[j].print_case(&args, option);
+				option = ((j == 4)	 ? 2
+						  : (j == 5) ? 1
+						  : (j == 6) ? 8
+						  : (j == 7) ? 16
+						  : (j == 8) ? 17
+						  : (j == 9) ? 3
+									 : 0);
+				flags = handle_flag(format, &i);
+				len += cases[j].print_case(&args, option, flags);
 			}
 			if (j >= 11)
 			{

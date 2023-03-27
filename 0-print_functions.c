@@ -6,7 +6,7 @@
  *
  * Return: integer showing number of chars written
  */
-int print_case_char(va_list *arg, int option)
+int print_case_char(va_list *arg, int option, int flags)
 {
 	char c;
 	int len = 0;
@@ -27,7 +27,7 @@ int print_case_char(va_list *arg, int option)
  *
  * Return: integer showing number of chars written
  */
-int print_case_str(va_list *arg, int option)
+int print_case_str(va_list *arg, int option, int flags)
 {
 	char *temp;
 	int len = 0;

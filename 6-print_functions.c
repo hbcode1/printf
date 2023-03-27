@@ -7,7 +7,7 @@
  *
  * Return: integer showing number of chars written
  */
-int print_case_ptr(va_list *arg, int option)
+int print_case_ptr(va_list *arg, int option, int flags)
 {
 	unsigned long int num;
 	int len = 0, i = 0;
@@ -20,12 +20,13 @@ int print_case_ptr(va_list *arg, int option)
 		temp = "(nil)";
 		while (*temp)
 			len += _putchar(*temp++);
+		return (len);
 	}
-	num = (unsigned long int)addr;
+	num = (unsigned long)addr;
 
-	while (num && temp)
+	while (num)
 	{
-		temp[i] = map[num % 16];
+		temp[i++] = map[num % 16];
 		num /= 16;
 	}
 	while (*temp)

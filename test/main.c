@@ -27,8 +27,8 @@ int main(void)
 	len1 = _printf("%%");
 	len2 = printf("%%");
 	printf("\nlen1 is %d, len2 is %d\n", len1, len2);
-	len1 = _printf("%p pointer", NULL);
-	len2 = printf("%p pointer", NULL);
+	len1 = _printf("%p pointer", (void *)&len1);
+	len2 = printf("%p pointer", (void *)&len1);
 	printf("\nlen1 is %d, len2 is %d\n", len1, len2);
 
 	return (0);
