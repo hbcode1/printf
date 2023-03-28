@@ -1,6 +1,4 @@
 #include "main.h"
-int print_string(char *str);
-int _strlen(char *str);
 /**
  * print_case_char - prints case for format of c
  * @arg: list of arguments
