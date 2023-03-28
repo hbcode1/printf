@@ -66,6 +66,10 @@ typedef unsigned int u_i;
  * l_u_i - typedef for long unsigned int
  */
 typedef long unsigned int l_u_i;
+/**
+ * s_u_i - typedef for short unsigned int
+ */
+typedef short unsigned int s_u_i;
 
 /* String manipulators*/
 void rev_str(char *str, int a, int z);

@@ -13,15 +13,14 @@ int main(void)
 	char *temp = "Hello";
 	int len1;
 	int len2;
-    void *addr;
+	void *addr;
 	_printf("String[%r]\n", "STRING");
 	_printf("String[%r][%r]\n", "String", "gnirtS");
 
-	
 	addr = (void *)0x7ffe637541f0;
 
-    _printf("pAddress:[%p]\n", addr);
-    printf("Address:[%p]\n", addr);
+	_printf("pAddress:[%p]\n", addr);
+	printf("Address:[%p]\n", addr);
 	_printf("%S\n", "Best\nSchool");
 	_printf("%S\n", "Best\tSchool");
 	_printf("%S\n", "Best\t\nSchool");
@@ -62,5 +61,25 @@ int main(void)
 	len1 = _printf("%p pointer", (void *)&len1);
 	len2 = printf("%p pointer", (void *)&len1);
 	printf("\nlen1 is %d, len2 is %d\n", len1, len2);
+
+	len1 = _printf("%d\n", 100);
+	len2 = printf("%d\n", 100);
+	printf("len1 is %d, len2 is %d\n", len1, len2);
+	len1 = _printf("%10d\n", 100);
+	len2 = printf("%10d\n", 100);
+	printf("len1 is %d, len2 is %d\n", len1, len2);
+	len1 = _printf("%05d\n", 100);
+	len2 = printf("%05d\n", 100);
+	printf("len1 is %d, len2 is %d\n", len1, len2);
+	len1 = _printf("%+-9d\n", 100);
+	len2 = printf("%+-9d\n", 100);
+	printf("len1 is %d, len2 is %d\n", len1, len2);
+	len1 = _printf("% -9d\n", 100);
+	len2 = printf("% -9d\n", 100);
+	printf("len1 is %d, len2 is %d\n", len1, len2);
+	len1 = _printf("%+9d\n", 100);
+	len2 = printf("%+9d\n", 100);
+	printf("len1 is %d, len2 is %d\n", len1, len2);
+
 	return (0);
 }

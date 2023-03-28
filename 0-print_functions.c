@@ -20,7 +20,7 @@ int print_padding(char padding, int n);
 int print_case_char(va_list *arg, int option, int f, int w, int p, int s)
 {
 	char c, padding = ' ';
-	int len = 0, i;
+	int len = 0;
 	;
 	(void)p, (void)s, (void)option;
 
@@ -54,7 +54,7 @@ int print_case_char(va_list *arg, int option, int f, int w, int p, int s)
 int print_case_str(va_list *arg, int option, int f, int w, int p, int s)
 {
 	char *temp, padding = ' ';
-	int len = 0, temp_len, i;
+	int len = 0, temp_len;
 	(void)s, (void)p;
 
 	temp = va_arg(*arg, char *);

@@ -20,13 +20,33 @@ void capitalise_chars(char *str)
 }
 
 /**
+ * print_sign - printd the sign of he integer based on it's flags
+ * @f: flag
+ * @is_neg: integer showing neative state. 0 is false, 1 is true
+ *
+ * Return: integer showing number of chars printed
+ */
+int print_sign(int f, int is_neg)
+{
+	int len = 0;
+	char neg_sign = '-', pos_sign = '+', spc_sign = ' ';
+
+	if (is_neg)
+		len += _putchar(neg_sign);
+	if (f & FLAGS_PLUS && !is_neg)
+		len += _putchar(pos_sign);
+	else if (f & FLAGS_SPACE && (f & FLAGS_PLUS || f & FLAGS_MINUS))
+		len += _putchar(spc_sign);
+
+	return (len);
+}
+
+/**
  * print-integers - helper function for printing integers
  * @str: string representation of number
  * @is_neg: checks for negative number. 0 if not, 1 if true
- * @option: int number that specifies case for output
  * @f: flags
  * @w: field width
- * @s: size
  *
  * Description: -> deals with w(width), f(flags) and s(size)
  *				-> width: just print padding as long as w > strlen
@@ -38,19 +58,32 @@ void capitalise_chars(char *str)
  *
  * Return: intger showing number of chars printed
  */
-int print_integer(char *str, int is_neg, int option, int f, int w, int s)
+int print_integer(char *str, int is_neg, int f, int w)
 {
-	int len = 0, i, j, string_len = _strlen(str);
-	char neg_sign = '-', padding = ' ';
+	int len = 0, i = 0, string_len = _strlen(str);
+	char padding = ' ';
 
 	if (f & FLAGS_ZERO)
 		padding = '0';
-	if (string_len < w && f & FLAGS_MINUS)
+
+	if (is_neg || (f & FLAGS_PLUS && !is_neg) || (f & FLAGS_SPACE))
+		i++;
+
+	if (string_len < w && (f & FLAGS_MINUS || f & FLAGS_SPACE))
+		len += print_sign(f, is_neg) + print_string(str) + print_padding(' ', w - string_len - i);
+	else if (string_len < w && !(f & FLAGS_NONE))
 	{
-		
+		len += print_padding(padding, w - string_len - i);
+		len += print_sign(f, is_neg) + print_string(str);
 	}
-	while (str[i])
-		len += _putchar(str[i++]);
+	else if ((string_len < w && (f & FLAGS_PLUS || f & FLAGS_ZERO)) || (f & FLAGS_SPACE))
+	{
+		len += print_padding(padding, w - string_len - i);
+		len += print_sign(f, is_neg) + print_string(str);
+	}
+
+	else if (string_len >= w)
+		len += print_sign(f, is_neg) + print_string(str);
 
 	return (len);
 }
@@ -96,13 +129,28 @@ int print_case_int(va_list *arg, int option, int f, int w, int p, int s)
 
 	if (num < 0)
 		num *= -1, is_neg = 1;
-	if (option != UNSIGNED_OPTION)
+
+	if (option != UNSIGNED_OPTION && s)
+	{
+		if (s == LONG_SIZE)
+			temp = itoa((l_u_i)num, temp, option);
+		if (s == SHORT_SIZE)
+			temp = itoa((s_u_i)num, temp, option);
+	}
+	else if (option == UNSIGNED_OPTION && s)
+	{
+		if (s == LONG_SIZE)
+			temp = itoa((l_u_i)num2, temp, option);
+		if (s == SHORT_SIZE)
+			temp = itoa((s_u_i)num2, temp, option);
+	}
+	else if (option != UNSIGNED_OPTION && !s)
 		temp = itoa(num, temp, option);
-	else if (option == UNSIGNED_OPTION)
+	else if (option == UNSIGNED_OPTION && !s)
 		temp = itoa(num2, temp, option);
 
 	if (option == CAPPED_HEX_OPTION)
 		capitalise_chars(temp);
-	len += print_integer(temp, is_neg, option, f, w, s);
+	len += print_integer(temp, is_neg, f, w);
 	return (len);
 }
