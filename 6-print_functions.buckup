@@ -1,5 +1,4 @@
 #include "main.h"
-#include <stdio.h>
 
 /**
  * print_case_ptr - prints the case for a pointer
@@ -14,38 +13,29 @@
  */
 int print_case_ptr(va_list *arg, int option, int f, int w, int p, int s)
 {
+	unsigned long int num;
 	int len = 0, i = 0;
-	char *temp = "", *hex = "";
-	void *ptr;
-	l_u_i addr;
+	char map[] = "0123456789abcdef", *temp = "";
+	void *addr = va_arg(*arg, void *);
 	(void)option, (void)p, (void)s;
-	
-	ptr = va_arg(*arg, void *);
-	addr = (l_u_i)ptr;
 
-	hex = malloc(sizeof(char) * 12);
-	if (hex == NULL)
-	{
-		return (0);
-	}
-	if (ptr == NULL)
+	if (addr == NULL)
 	{
 		temp = "(nil)";
 		while (*temp)
 			len += _putchar(*temp++);
 		return (len);
 	}
-	if (!w && !f && !i) /* just for checks and compilation purposes*/
+	num = (unsigned long)addr;
+	if (w && f) /* just for checks and compilation purposes*/
 	{
-		itoa(addr, hex, 16);
-		len += _putchar('0');
-		len += _putchar('x');
-		while (*hex != '\0')
+		while (num)
 		{
-			len += _putchar(*hex);
-			hex++;
-		}					
-		
+			temp[i++] = map[num % 16];
+			num /= 16;
+		}
 	}
+	while (*temp)
+		len += _putchar(*temp++);
 	return (len);
 }

@@ -31,7 +31,7 @@ void rev_str(char *str, int a, int z)
 *
 * Return: character pointer string
 */
-char *itoa(u_i n, char *str, int b)
+char *itoa(l_u_i n, char *str, int b)
 {
 	int i = 0, r;
 

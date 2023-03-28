@@ -12,6 +12,18 @@ int main(void)
 	char *temp = "Hello";
 	int len1;
 	int len2;
+    void *addr;
+	
+	addr = (void *)0x7ffe637541f0;
+
+    _printf("pAddress:[%p]\n", addr);
+    printf("Address:[%p]\n", addr);
+
+/**/
+	_printf("%S\n", "Best\nSchool");
+	_printf("%S\n", "Best\tSchool");
+	_printf("%S\n", "Best\t\nSchool");
+	_printf("%S\n", "Best\t\nSchoo\nl");
 	len1 = _printf("Let's try to printf a simple sentence.\n");
 	len2 = printf("Let's try to printf a simple sentence.\n");
 	printf("len1 is %d, len2 is %d\n", len1, len2);
@@ -39,15 +51,15 @@ int main(void)
 	len1 = _printf("before%%\n");
 	len2 = _printf("before%%\n");
 	printf("len1 is %d, len2 is %d\n", len1, len2);
-	/*printf("before%");*/
+	printf("before%");
 	_printf("");
-	/*printf("");*/
-	/*printf("\nlen1 is %d, len2 is %d\n", len1, len2);*/
+	printf("");
+	printf("\nlen1 is %d, len2 is %d\n", len1, len2);
 
-	/*printf("\nlen1 is %d, len2 is %d\n", len1, len2);*/
-	/*len1 = _printf("%p pointer", (void *)&len1);
+	printf("\nlen1 is %d, len2 is %d\n", len1, len2);
+	len1 = _printf("%p pointer", (void *)&len1);
 	len2 = printf("%p pointer", (void *)&len1);
-	printf("\nlen1 is %d, len2 is %d\n", len1, len2);*/
-
+	printf("\nlen1 is %d, len2 is %d\n", len1, len2);
+/**/
 	return (0);
 }
