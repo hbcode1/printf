@@ -23,7 +23,7 @@ int print_case_ptr(va_list *arg, int option, int f, int w, int p, int s)
 	ptr = va_arg(*arg, void *);
 	addr = (l_u_i)ptr;
 
-	hex = malloc(sizeof(char) * 12);
+	hex = malloc(sizeof(char) * 17);
 	if (hex == NULL)
 	{
 		return (0);
