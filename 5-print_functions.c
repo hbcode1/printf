@@ -16,12 +16,12 @@ int print_case_cstr(va_list *arg, int option, int f, int w, int p, int s)
 	int len = 0;
 	(void)p, (void)s;
 
-	hex = malloc(sizeof(char) * 3);
+	hex = malloc(sizeof(char) * 10);
 	if (hex == NULL)
 		return (0);
 
 	temp = va_arg(*arg, char *);
-	if (option == 3 && f && w) /*for checking purposes, must be changed in future*/
+	if (option == 3 && !f && !w) /*for checking purposes, must be changed in future*/
 	{
 		if (temp == NULL)
 			temp = "(null)";
@@ -42,10 +42,13 @@ int print_case_cstr(va_list *arg, int option, int f, int w, int p, int s)
 						len += _putchar(*hex);
 						hex++;
 					}
-					temp++;
 				}
+				temp++;
 			}
-			len += _putchar(*temp++);
+			else
+			{
+				len += _putchar(*temp++);
+			}
 		}
 	}
 	return (len);
