@@ -39,17 +39,17 @@ _printf_case_t *handle_cases(void)
  *
  * Return: integer for cases
  */
-_flag_t *handle_flags(void)
+_flag_t *get_flags(void)
 {
 	int i, len = 6;
 	_flag_t *c;
 	_flag_t cases[] = {
-		{'-', 1},
-		{'+', 2},
-		{'0', 4},
-		{'#', 8},
-		{' ', 16},
-		{0, 0},
+		{'-', FLAGS_MINUS},
+		{'+', FLAGS_PLUS},
+		{'0', FLAGS_ZERO},
+		{'#', FLAGS_HASH},
+		{' ', FLAGS_SPACE},
+		{0, FLAGS_NONE},
 	};
 	c = malloc(sizeof(_flag_t) * len);
 	if (c == NULL)
@@ -60,4 +60,17 @@ _flag_t *handle_flags(void)
 	}
 
 	return (c);
+}
+
+/**
+ * is_num - checks if a char is a number
+ * @c: character being checked
+ *
+ * Return: 1 if true, 0 if false
+ */
+int is_num(char c)
+{
+	if (c >= '0' && c <= '9')
+		return (1);
+	return (0);
 }

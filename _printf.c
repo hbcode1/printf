@@ -11,9 +11,10 @@
  */
 int _printf(const char *format, ...)
 {
-	int i = 0, j = 0, k = 0, len = 0, option = 0, flags = 0;
+	int i = 0, k = 0, len = 0, printed = 0, flag, width, precision, size;
 	va_list args;
 	_printf_case_t *cases = handle_cases();
+	_flag_t *flags = get_flags();
 	char buffer[BUFF_SIZE];
 
 	if (format == NULL)
@@ -39,29 +40,18 @@ int _printf(const char *format, ...)
 				len += _putchar('%'), i++;
 				continue;
 			}
-			while (cases[j].id != format[i] && cases[j].id)
-				j++;
-			if (j < 11)
-			{
-				option = ((j == 4)	 ? 2
-						  : (j == 5) ? 1
-						  : (j == 6) ? 8
-						  : (j == 7) ? 16
-						  : (j == 8) ? 17
-						  : (j == 9) ? 3
-									 : 0);
-				flags = handle_flag(format, &i);
-				len += cases[j].print_case(&args, option, flags);
-			}
-			if (j >= 11)
-			{
-				len += _putchar('%');
-				len += _putchar(format[i]);
-			}
+			flag = handle_flags(format, &i, flags);
+			width = get_width(format, &i, &args);
+			precision = get_precision(format, &i, &args);
+			size = get_size(format, &i);
+			printed = handle_printing(format, &i, &args, cases, flag, width, precision, size);
+			if (printed == -1)
+				return (-1);
+			len += printed;
 		}
 		else
 			len += _putchar(format[i]);
-		j = 0, i++, option = 0;
+		i++;
 	}
 	print_buffer(buffer, &k);
 	va_end(args);

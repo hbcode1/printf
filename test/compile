@@ -1,0 +1,4 @@
+#!/bin/bash
+gcc -Wall -Werror -Wextra -pedantic -g -std=gnu89 ../*.c main.c -o out;
+echo "Testing program\n";
+./out;

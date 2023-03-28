@@ -9,7 +9,7 @@
  */
 int main(void)
 {
-	char *temp = NULL;
+	char *temp = "Hello";
 	int len1;
 	int len2;
 	len1 = _printf("Let's try to printf a simple sentence.\n");
@@ -21,15 +21,33 @@ int main(void)
 	len1 = _printf("String:[%s]\n", "I am a string !");
 	len2 = printf("String:[%s]\n", "I am a string !");
 	printf("len1 is %d, len2 is %d\n", len1, len2);
-	len1 = _printf("%s\n", temp);
-	len2 = printf("%s", temp);
-	printf("\nlen1 is %d, len2 is %d\n", len1, len2);
-	len1 = _printf("%%");
-	len2 = printf("%%");
-	printf("\nlen1 is %d, len2 is %d\n", len1, len2);
-	len1 = _printf("%p pointer", (void *)&len1);
+	len1 = _printf("%10s\n", temp);
+	len2 = printf("%10s\n", temp);
+	printf("len1 is %d, len2 is %d\n", len1, len2);
+	len1 = _printf("%10c\n", 'A');
+	len2 = printf("%10c\n", 'A');
+	printf("len1 is %d, len2 is %d\n", len1, len2);
+	len1 = _printf("%-10c\n", 'A');
+	len2 = printf("%-10c\n", 'A');
+	printf("len1 is %d, len2 is %d\n", len1, len2);
+	len1 = _printf("%-10s\n", temp);
+	len2 = printf("%-10s\n", temp);
+	printf("len1 is %d, len2 is %d\n", len1, len2);
+	len1 = _printf("%*s\n", 10, temp);
+	len2 = printf("%*s\n", 10, temp);
+	printf("len1 is %d, len2 is %d\n", len1, len2);
+	len1 = _printf("before%%\n");
+	len2 = _printf("before%%\n");
+	printf("len1 is %d, len2 is %d\n", len1, len2);
+	/*printf("before%");*/
+	_printf("");
+	/*printf("");*/
+	/*printf("\nlen1 is %d, len2 is %d\n", len1, len2);*/
+
+	/*printf("\nlen1 is %d, len2 is %d\n", len1, len2);*/
+	/*len1 = _printf("%p pointer", (void *)&len1);
 	len2 = printf("%p pointer", (void *)&len1);
-	printf("\nlen1 is %d, len2 is %d\n", len1, len2);
+	printf("\nlen1 is %d, len2 is %d\n", len1, len2);*/
 
 	return (0);
 }

@@ -1,20 +1,46 @@
 #include "main.h"
+int print_string(char *str);
+int _strlen(char *str);
 /**
  * print_case_char - prints case for format of c
  * @arg: list of arguments
  * @option: option for the specifier
+ * @f: flags
+ * @w: field width
+ * @p: precision
+ * @s: size
+ *
+ * Description: char can get padded from left or right due to field width
+ *				->if flag gives a '-' then right padding, if '+' then left *				padding
+ *				->padding could be with 0s or ' 's
  *
  * Return: integer showing number of chars written
  */
-int print_case_char(va_list *arg, int option, int flags)
+int print_case_char(va_list *arg, int option, int f, int w, int p, int s)
 {
-	char c;
-	int len = 0;
+	char c, padding = ' ';
+	int len = 0, i;
+	;
+	(void)p, (void)s, (void)option;
 
 	c = va_arg(*arg, int);
+	if (c == 0)
+		return (-1);
 
-	if (option == 0)
+	if (w > 1 && (f & FLAGS_MINUS || f & FLAGS_NONE))
 	{
+		len += _putchar(c);
+		for (i = 0; i < w - 1; i++)
+		{
+			len += _putchar(padding);
+		}
+	}
+	else
+	{
+		for (i = 0; i < w - 1; i++)
+		{
+			len += _putchar(padding);
+		}
 		len += _putchar(c);
 	}
 	return (len);
@@ -24,21 +50,74 @@ int print_case_char(va_list *arg, int option, int flags)
  * print_case_str - prints case for format of s
  * @arg: list of arguments
  * @option: option for the secifier
+ * @f: flags
+ * @w: field width
+ * @p: precision
+ * @s: size
+ *
+ * Description: strings get padded so s and p modifiers are void
+ *				-> if flag gives a '-' then right padding, if '+' then left *				padding
+ *				-> padding is done with ' 's
+ *				-> string checks if w > length of given first
  *
  * Return: integer showing number of chars written
  */
-int print_case_str(va_list *arg, int option, int flags)
+int print_case_str(va_list *arg, int option, int f, int w, int p, int s)
 {
-	char *temp;
-	int len = 0;
+	char *temp, padding = ' ';
+	int len = 0, temp_len, i;
+	(void)s, (void)p;
 
 	temp = va_arg(*arg, char *);
 	if (option == 0)
 	{
 		if (temp == NULL)
 			temp = "(null)";
-		while (*temp)
-			len += _putchar(*temp++);
+		temp_len = _strlen(temp);
+		if (temp_len < w && (f & FLAGS_MINUS))
+		{
+			len += print_string(temp);
+			for (i = 0; i < w - temp_len; i++)
+				len += _putchar(padding);
+		}
+		else if (temp_len < w)
+		{
+			for (i = 0; i < w - temp_len; i++)
+				len += _putchar(padding);
+			len += print_string(temp);
+		}
+		else if (temp_len >= w)
+			len += print_string(temp);
 	}
 	return (len);
+}
+
+/**
+ * _strlen - gives the length of the string
+ * @str: string given
+ *
+ * Return: length of the string in integer form
+ */
+int _strlen(char *str)
+{
+	int i = 0;
+
+	while (str[i] != '\0')
+		i++;
+	return (i);
+}
+
+/**
+ * print_string - prints the string
+ * @str: string to be printed
+ *
+ * Return: number of chars printed
+ */
+int print_string(char *str)
+{
+	int i = 0;
+
+	while (str[i] != '\0')
+		_putchar(str[i++]);
+	return (i);
 }

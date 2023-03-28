@@ -22,6 +22,10 @@ void capitalise_chars(char *str)
  * print_case_int - prints case for format of d
  * @arg: list of arguments
  * @specifier: int number that specifies case for output
+ * @f: flags
+ * @w: field width
+ * @p: precision
+ * @s: size
  *
  * Description: cases for specifier are here...
  *				0 for normal integers
@@ -32,21 +36,23 @@ void capitalise_chars(char *str)
  *				17 for capitalised hex
  * Return: integer of number of things writted
  */
-int print_case_int(va_list *arg, int specifier, int flags)
+int print_case_int(va_list *arg, int specifier, int f, int w, int p, int s)
 {
 	int num = 0, len = 0;
 	unsigned int num2 = 0;
-	char *temp;
+	char *temp, padding = ' ';
+	(void)p;
 
 	temp = malloc(sizeof(char) * 100);
 	if (temp == NULL)
 		return (0);
-	if (specifier == 0)
+	if (specifier == 0 && !f && !w && s)
 	{
 		specifier = 10, num = va_arg(*arg, int);
 		if (num < 0)
 		{
 			num *= -1;
+			len += _putchar(padding);
 			len += _putchar('-');
 		}
 		temp = itoa(num, temp, specifier);

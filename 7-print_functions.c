@@ -11,10 +11,9 @@
  *				the flag identifier for that flag
  * Return: flags
  */
-int handle_flag(const char *format, int *index)
+int handle_flags(const char *format, int *index, _flag_t *flags)
 {
-	int i, j, k, result = 0;
-	_flag_t flags[] = handle_flags();
+	int i, j, k = *index, result = 0;
 
 	for (i = *index; format[i] != '\0' && format[i] != '%'; i++)
 	{
@@ -23,9 +22,13 @@ int handle_flag(const char *format, int *index)
 			if (format[i] == flags[j].id)
 			{
 				result |= flags[j].value;
+				k++;
+				break;
 			}
 		}
+		if (flags[j].id == 0)
+			break;
 	}
-	*index = i - 1;
+	*index = k;
 	return (result);
 }
