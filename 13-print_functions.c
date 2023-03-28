@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
- * print_case_cstr - prints case for format of s
+ * print_case_rev - prints case for format of s
  * @arg: list of arguments
  * @option: option for the secifier
  * @f: flags
@@ -23,7 +23,7 @@ int print_case_rev(va_list *arg, int option, int f, int w, int p, int s)
 	{
 		return (0);
 	}
-	for (i = _strlen(temp) - 1; i >=0; i--)
+	for (i = _strlen(temp) - 1; i >= 0; i--)
 	{
 		txt[j] = temp[i];
 		j++;

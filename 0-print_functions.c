@@ -21,7 +21,6 @@ int print_case_char(va_list *arg, int option, int f, int w, int p, int s)
 {
 	char c, padding = ' ';
 	int len = 0, i;
-	;
 	(void)p, (void)s, (void)option;
 
 	c = va_arg(*arg, int);

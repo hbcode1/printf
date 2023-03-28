@@ -20,7 +20,7 @@ void capitalise_chars(char *str)
 }
 
 /**
- * print-integers - helper function for printing integers
+ * print_integer - helper function for printing integers
  * @str: string representation of number
  * @is_neg: checks for negative number. 0 if not, 1 if true
  * @option: int number that specifies case for output
@@ -47,7 +47,6 @@ int print_integer(char *str, int is_neg, int option, int f, int w, int s)
 		padding = '0';
 	if (string_len < w && f & FLAGS_MINUS)
 	{
-		
 	}
 	while (str[i])
 		len += _putchar(str[i++]);
@@ -91,7 +90,9 @@ int print_case_int(va_list *arg, int option, int f, int w, int p, int s)
 		num = va_arg(*arg, int);
 	else if (option == UNSIGNED_OPTION)
 		num2 = va_arg(*arg, unsigned int), option = DECIMAL_OPTION;
-	else if (option == OCTAL_OPTION || option == HEX_OPTION || option == CAPPED_HEX_OPTION)
+	else if (option == OCTAL_OPTION
+			|| option == HEX_OPTION ||
+			option == CAPPED_HEX_OPTION)
 		num = va_arg(*arg, int);
 
 	if (num < 0)

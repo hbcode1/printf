@@ -19,7 +19,7 @@ int print_case_ptr(va_list *arg, int option, int f, int w, int p, int s)
 	void *ptr;
 	l_u_i addr;
 	(void)option, (void)p, (void)s;
-	
+
 	ptr = va_arg(*arg, void *);
 	addr = (l_u_i)ptr;
 
@@ -44,8 +44,7 @@ int print_case_ptr(va_list *arg, int option, int f, int w, int p, int s)
 		{
 			len += _putchar(*hex);
 			hex++;
-		}					
-		
+		}
 	}
 	return (len);
 }

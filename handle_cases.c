@@ -37,7 +37,7 @@ _printf_case_t *handle_cases(void)
 }
 
 /**
- * handle_cases - returns a pointer to some cases
+ * get_flags - returns a pointer to some cases
  *
  * Return: integer for cases
  */
