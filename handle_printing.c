@@ -5,7 +5,6 @@
  * @format: the format string
  * @index: index at that point
  * @arg: argument list to be used
- * @buffer: buffer of max 1024 chars
  * @cases: list of cases to loop through
  * @f: flags
  * @w: field width
@@ -14,7 +13,8 @@
  *
  * Return: integer showing number of chars printed
  */
-int handle_printing(const char *format, int *index, va_list *arg, _printf_case_t *cases, int f, int w, int p, int s)
+int handle_printing(const char *format, int *index,
+		va_list *arg, _printf_case_t *cases, int f, int w, int p, int s)
 {
 	/*handle printing from here instead of _printf for special cases*/
 	int len = 0, i = 0, j = 0, option = 0;

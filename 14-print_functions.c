@@ -50,7 +50,7 @@ int print_case_rot(va_list *arg, int option, int f, int w, int p, int s)
 		{
 			return (0);
 		}
-		for (i =  0;i < _strlen(temp); i++)
+		for (i =  0; i < _strlen(temp); i++)
 		{
 			txt[j] = temp[i];
 			j++;

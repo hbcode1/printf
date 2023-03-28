@@ -19,9 +19,7 @@ int _printf(const char *format, ...)
 
 	if (format == NULL)
 		return (-1);
-
 	va_start(args, format);
-
 	while (format[i] != '\0')
 	{
 		if (format[i] != '%')
@@ -44,7 +42,8 @@ int _printf(const char *format, ...)
 			width = get_width(format, &i, &args);
 			precision = get_precision(format, &i, &args);
 			size = get_size(format, &i);
-			printed = handle_printing(format, &i, &args, cases, flag, width, precision, size);
+			printed = handle_printing(format, &i,
+					&args, cases, flag, width, precision, size);
 			if (printed == -1)
 				return (-1);
 			len += printed;

@@ -26,13 +26,6 @@ void capitalise_chars(char *str)
  *
  * Return: number of times chars are printed
  */
-/**
- * print_padding - prints padding up to n times
- * @padding: character used for padding
- * @n: number of pads to apply
- *
- * Return: integer showing number of chars printed
- */
 int print_filling(char filling, int n)
 {
 	int i, len = 0;
@@ -93,7 +86,6 @@ int print_integer(char *str, int is_neg, int f, int w, int p)
 
 	if (f & FLAGS_ZERO)
 		padding = '0';
-
 	if (is_neg || (f & FLAGS_PLUS && !is_neg) || (f & FLAGS_SPACE))
 		i++;
 	if (p <= 0)
@@ -163,7 +155,6 @@ int print_case_int(va_list *arg, int option, int f, int w, int p, int s)
 	temp = malloc(sizeof(char) * 100);
 	if (temp == NULL)
 		return (0);
-
 	if (option == DEFAULT_OPTION)
 		option = DECIMAL_OPTION, num = va_arg(*arg, int);
 	else if (option == BINARY_OPTION)
@@ -173,10 +164,8 @@ int print_case_int(va_list *arg, int option, int f, int w, int p, int s)
 	else if (option == OCTAL_OPTION || option == HEX_OPTION ||
 			 option == CAPPED_HEX_OPTION)
 		num = va_arg(*arg, int);
-
 	if (num < 0)
 		num *= -1, is_neg = 1;
-
 	if (option != UNSIGNED_OPTION && s)
 	{
 		if (s == LONG_SIZE)
@@ -195,9 +184,15 @@ int print_case_int(va_list *arg, int option, int f, int w, int p, int s)
 		temp = itoa(num, temp, option);
 	else if (option == UNSIGNED_OPTION && !s)
 		temp = itoa(num2, temp, option);
-
 	if (option == CAPPED_HEX_OPTION)
 		capitalise_chars(temp);
 	len += print_integer(temp, is_neg, f, w, p);
 	return (len);
 }
+/**
+ * print_padding - prints padding up to n times
+ * @padding: character used for padding
+ * @n: number of pads to apply
+ *
+ * Return: integer showing number of chars printed
+ */
