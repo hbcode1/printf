@@ -7,7 +7,7 @@
  */
 _printf_case_t *handle_cases(void)
 {
-	int i, len = 12;
+	int i, len = 13;
 	_printf_case_t *c;
 	_printf_case_t cases[] = {
 		{'c', print_case_char},
@@ -22,6 +22,7 @@ _printf_case_t *handle_cases(void)
 		{'S', print_case_cstr},
 		{'p', print_case_ptr},
 		{'r', print_case_rev},
+		{'R', print_case_rot},
 		{0, NULL},
 	};
 	c = malloc(sizeof(_printf_case_t) * len);
@@ -36,7 +37,7 @@ _printf_case_t *handle_cases(void)
 }
 
 /**
- * handle_cases - returns a pointer to some cases
+ * get_flags - returns a pointer to some cases
  *
  * Return: integer for cases
  */

@@ -21,7 +21,7 @@ int handle_printing(const char *format, int *index, va_list *arg, _printf_case_t
 
 	while (cases[j].id != format[*index] && cases[j].id)
 		j++;
-	if (j < 12)
+	if (j < 13)
 	{
 		option = ((j == 4)	 ? BINARY_OPTION
 				  : (j == 5) ? UNSIGNED_OPTION
@@ -32,7 +32,7 @@ int handle_printing(const char *format, int *index, va_list *arg, _printf_case_t
 							 : DEFAULT_OPTION);
 		len += cases[j].print_case(arg, option, f, w, p, s);
 	}
-	if (j >= 12)
+	if (j >= 13)
 	{
 		if (format[*index] == '\0')
 			return (-1);

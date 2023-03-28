@@ -1,10 +1,10 @@
 #include "main.h"
 
 /**
- * handle_flag - handles the possible flags in format string
+ * handle_flags - handles the possible flags in format string
  * @format: format string to look inside of
  * @index: current index position inside format
- *
+ * @flags: flags to handle
  * Description: takes the @format and the current @index inside the format
  *				looks for flags in the next few chars,
  *				then loops through format, and when it finds flag, it returns
