@@ -7,7 +7,7 @@
  */
 _printf_case_t *handle_cases(void)
 {
-	int i, len = 12;
+	int i, len = 13;
 	_printf_case_t *c;
 	_printf_case_t cases[] = {
 		{'c', print_case_char},
