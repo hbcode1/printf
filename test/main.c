@@ -80,6 +80,12 @@ int main(void)
 	len1 = _printf("%+9d\n", 100);
 	len2 = printf("%+9d\n", 100);
 	printf("len1 is %d, len2 is %d\n", len1, len2);
+	len1 = _printf("%ld\n", 100);
+	len2 = printf("%ld\n", 100);
+	printf("len1 is %d, len2 is %d\n", len1, len2);
+	len1 = _printf("%.8d\n", 100);
+	len2 = printf("%10.8d\n", 100);
+	printf("len1 is %d, len2 is %d\n", len1, len2);
 
 	return (0);
 }

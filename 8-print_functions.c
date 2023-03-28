@@ -50,26 +50,25 @@ int get_precision(const char *format, int *index, va_list *arg)
 	int i = *index, precision = -1, j = *index, k = 0;
 
 	if (format[i] == '.')
-		return (precision);
-
-	precision = 0;
-
-	for (i = *index; format[i] != '\0'; i++)
 	{
-		if (is_num(format[i]))
+		precision = 0, i++;
+		for (i = *index; format[i] != '\0' && format[i] != '%'; i++)
 		{
-			precision *= 10;
-			precision += format[i] - '0';
-			k++;
+			if (is_num(format[i]))
+			{
+				precision *= 10;
+				precision += format[i] - '0';
+				k++;
+			}
+			else if (format[i] == '*')
+			{
+				k++;
+				precision = va_arg(*arg, int);
+				break;
+			}
+			else
+				break;
 		}
-		else if (format[i] == '*')
-		{
-			k++;
-			precision = va_arg(*arg, int);
-			break;
-		}
-		else
-			break;
 	}
 	if (!k)
 		*index = j;

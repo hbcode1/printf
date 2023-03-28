@@ -107,6 +107,7 @@ int get_precision(const char *format, int *index, va_list *arg);
 int get_size(const char *format, int *index);
 int is_num(char c);
 int print_padding(char padding, int n);
+int print_filling(char filling, int n);
 int print_string(char *str);
 int _strlen(char *str);
 
