@@ -6,6 +6,7 @@
 #include <stdarg.h>
 #include <string.h>
 #include <stddef.h>
+#include <stdio.h>
 
 #define BUFF_SIZE 1024
 
@@ -61,6 +62,15 @@ typedef struct _flag
  * u_i - typedef for unsigned int
  */
 typedef unsigned int u_i;
+/**
+ * l_u_i - typedef for long unsigned int
+ */
+typedef long unsigned int l_u_i;
+
+/* String manipulators*/
+void rev_str(char *str, int a, int z);
+int print_string(char *str);
+int _strlen(char *str);
 
 /*Task 0*/
 int _putchar(char c);
@@ -70,7 +80,7 @@ int print_case_char(va_list *arg, int option, int f, int w, int p, int s);
 int print_case_str(va_list *arg, int option, int f, int w, int p, int s);
 
 /*Task 1*/
-char *itoa(u_i n, char *str, int b);
+char *itoa(l_u_i n, char *str, int b);
 int print_case_int(va_list *arg, int option, int f, int w, int p, int s);
 
 /*Task 4*/
@@ -96,4 +106,6 @@ int print_padding(char padding, int n);
 int print_string(char *str);
 int _strlen(char *str);
 
+/* Task 13*/
+int print_case_rev(va_list *arg, int option, int f, int w, int p, int s);
 #endif

@@ -21,6 +21,7 @@ _printf_case_t *handle_cases(void)
 		{'X', print_case_int},
 		{'S', print_case_cstr},
 		{'p', print_case_ptr},
+		{'r', print_case_rev},
 		{0, NULL},
 	};
 	c = malloc(sizeof(_printf_case_t) * len);
