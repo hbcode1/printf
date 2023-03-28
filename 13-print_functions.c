@@ -18,17 +18,20 @@ int print_case_rev(va_list *arg, int option, int f, int w, int p, int s)
 	(void)s, (void)p;
 
 	temp = va_arg(*arg, char *);
-	txt = malloc((_strlen(temp) + 1) * sizeof(char));
-	if (txt == NULL)
+	if (temp)
 	{
-		return (0);
+		txt = malloc((_strlen(temp) + 1) * sizeof(char));
+		if (txt == NULL)
+		{
+			return (0);
+		}
+		for (i = _strlen(temp) - 1; i >= 0; i--)
+		{
+			txt[j] = temp[i];
+			j++;
+		}
+		temp = txt;
 	}
-	for (i = _strlen(temp) - 1; i >= 0; i--)
-	{
-		txt[j] = temp[i];
-		j++;
-	}
-	temp = txt;
 	if (option == 0)
 	{
 		if (temp == NULL)

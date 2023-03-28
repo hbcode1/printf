@@ -39,11 +39,24 @@ char *rot13(char *str)
  */
 int print_case_rot(va_list *arg, int option, int f, int w, int p, int s)
 {
-	char *temp, padding = ' ';
-	int len = 0, temp_len, i;
+	char *temp, *txt, padding = ' ';
+	int len = 0, temp_len, i, j = 0;
 	(void)s, (void)p;
 	temp = va_arg(*arg, char *);
-	temp = rot13(temp);
+	if (temp)
+	{
+		txt = malloc((_strlen(temp) + 1) * sizeof(char));
+		if (txt == NULL)
+		{
+			return (0);
+		}
+		for (i =  0;i < _strlen(temp); i++)
+		{
+			txt[j] = temp[i];
+			j++;
+		}
+		temp = rot13(txt);
+	}
 	if (option == 0)
 	{
 		if (temp == NULL)
