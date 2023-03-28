@@ -27,6 +27,7 @@
 #define BINARY_OPTION 2
 #define C_STRING_OPTION 3
 #define OCTAL_OPTION 8
+#define DECIMAL_OPTION 10
 #define HEX_OPTION 16
 #define CAPPED_HEX_OPTION 17
 
@@ -91,5 +92,8 @@ int get_width(const char *format, int *index, va_list *arg);
 int get_precision(const char *format, int *index, va_list *arg);
 int get_size(const char *format, int *index);
 int is_num(char c);
+int print_padding(char padding, int n);
+int print_string(char *str);
+int _strlen(char *str);
 
 #endif

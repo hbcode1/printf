@@ -18,10 +18,47 @@ void capitalise_chars(char *str)
 		}
 	}
 }
+
+/**
+ * print-integers - helper function for printing integers
+ * @str: string representation of number
+ * @is_neg: checks for negative number. 0 if not, 1 if true
+ * @option: int number that specifies case for output
+ * @f: flags
+ * @w: field width
+ * @s: size
+ *
+ * Description: -> deals with w(width), f(flags) and s(size)
+ *				-> width: just print padding as long as w > strlen
+ *					two padding types: '0' and ' ', 0 fill for left pad only
+ *				-> flags: '+' and '-' have effect of making print the sign
+ *					they also justify content, + is right, - in left
+ *					' ' before any other flag turns the '+' to a ' ' sign
+ *				-> size: two sizes: l(long) and h(short)
+ *
+ * Return: intger showing number of chars printed
+ */
+int print_integer(char *str, int is_neg, int option, int f, int w, int s)
+{
+	int len = 0, i, j, string_len = _strlen(str);
+	char neg_sign = '-', padding = ' ';
+
+	if (f & FLAGS_ZERO)
+		padding = '0';
+	if (string_len < w && f & FLAGS_MINUS)
+	{
+		
+	}
+	while (str[i])
+		len += _putchar(str[i++]);
+
+	return (len);
+}
+
 /**
  * print_case_int - prints case for format of d
  * @arg: list of arguments
- * @specifier: int number that specifies case for output
+ * @option: int number that specifies case for output
  * @f: flags
  * @w: field width
  * @p: precision
@@ -34,48 +71,38 @@ void capitalise_chars(char *str)
  *				8 for octal
  *				16 for hexadecimal
  *				17 for capitalised hex
+ *				-> int needs w, s, f arguments
  * Return: integer of number of things writted
  */
-int print_case_int(va_list *arg, int specifier, int f, int w, int p, int s)
+int print_case_int(va_list *arg, int option, int f, int w, int p, int s)
 {
-	int num = 0, len = 0;
+	int num = 0, len = 0, is_neg = 0;
 	unsigned int num2 = 0;
-	char *temp, padding = ' ';
+	char *temp;
 	(void)p;
 
 	temp = malloc(sizeof(char) * 100);
 	if (temp == NULL)
 		return (0);
-	if (specifier == 0 && !f && !w && s)
-	{
-		specifier = 10, num = va_arg(*arg, int);
-		if (num < 0)
-		{
-			num *= -1;
-			len += _putchar(padding);
-			len += _putchar('-');
-		}
-		temp = itoa(num, temp, specifier);
-	}
-	if (specifier == 2)
-	{
-		num = va_arg(*arg, int);
-		temp = itoa(num, temp, specifier);
-	}
-	if (specifier == 1)
-	{
-		num2 = va_arg(*arg, unsigned int), specifier = 10;
-		temp = itoa(num2, temp, specifier);
-	}
-	if (specifier == 8 || specifier == 16 || specifier == 17)
-	{
 
-		num2 = va_arg(*arg, int);
-		temp = itoa(num2, temp, specifier);
-		if (specifier == 17)
-			capitalise_chars(temp);
-	}
-	while (*temp)
-		len += _putchar(*temp++);
+	if (option == DEFAULT_OPTION)
+		option = DECIMAL_OPTION, num = va_arg(*arg, int);
+	else if (option == BINARY_OPTION)
+		num = va_arg(*arg, int);
+	else if (option == UNSIGNED_OPTION)
+		num2 = va_arg(*arg, unsigned int), option = DECIMAL_OPTION;
+	else if (option == OCTAL_OPTION || option == HEX_OPTION || option == CAPPED_HEX_OPTION)
+		num = va_arg(*arg, int);
+
+	if (num < 0)
+		num *= -1, is_neg = 1;
+	if (option != UNSIGNED_OPTION)
+		temp = itoa(num, temp, option);
+	else if (option == UNSIGNED_OPTION)
+		temp = itoa(num2, temp, option);
+
+	if (option == CAPPED_HEX_OPTION)
+		capitalise_chars(temp);
+	len += print_integer(temp, is_neg, option, f, w, s);
 	return (len);
 }

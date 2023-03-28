@@ -1,6 +1,7 @@
 #include "main.h"
 int print_string(char *str);
 int _strlen(char *str);
+int print_padding(char padding, int n);
 /**
  * print_case_char - prints case for format of c
  * @arg: list of arguments
@@ -28,21 +29,9 @@ int print_case_char(va_list *arg, int option, int f, int w, int p, int s)
 		return (-1);
 
 	if (w > 1 && (f & FLAGS_MINUS || f & FLAGS_NONE))
-	{
-		len += _putchar(c);
-		for (i = 0; i < w - 1; i++)
-		{
-			len += _putchar(padding);
-		}
-	}
+		len += _putchar(c) + print_padding(padding, w - 1);
 	else
-	{
-		for (i = 0; i < w - 1; i++)
-		{
-			len += _putchar(padding);
-		}
-		len += _putchar(c);
-	}
+		len += print_padding(padding, w - 1) + _putchar(c);
 	return (len);
 }
 
@@ -75,17 +64,9 @@ int print_case_str(va_list *arg, int option, int f, int w, int p, int s)
 			temp = "(null)";
 		temp_len = _strlen(temp);
 		if (temp_len < w && (f & FLAGS_MINUS))
-		{
-			len += print_string(temp);
-			for (i = 0; i < w - temp_len; i++)
-				len += _putchar(padding);
-		}
+			len += print_string(temp) + print_padding(padding, w - temp_len);
 		else if (temp_len < w)
-		{
-			for (i = 0; i < w - temp_len; i++)
-				len += _putchar(padding);
-			len += print_string(temp);
-		}
+			len += print_padding(padding, w - temp_len) + print_string(temp);
 		else if (temp_len >= w)
 			len += print_string(temp);
 	}
@@ -120,4 +101,21 @@ int print_string(char *str)
 	while (str[i] != '\0')
 		_putchar(str[i++]);
 	return (i);
+}
+
+/**
+ * print_padding - prints padding up to n times
+ * @padding: character used for padding
+ * @n: number of pads to apply
+ *
+ * Return: integer showing number of chars printed
+ */
+int print_padding(char padding, int n)
+{
+	int i, len = 0;
+
+	for (i = 0; i < n; i++)
+		len += _putchar(padding);
+
+	return (len);
 }
