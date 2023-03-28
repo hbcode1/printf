@@ -108,4 +108,8 @@ int _strlen(char *str);
 
 /* Task 13*/
 int print_case_rev(va_list *arg, int option, int f, int w, int p, int s);
+
+/* Task 13*/
+char *rot13(char *str);
+int print_case_rot(va_list *arg, int option, int f, int w, int p, int s);
 #endif
