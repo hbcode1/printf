@@ -158,7 +158,7 @@ int print_case_int(va_list *arg, int option, int f, int w, int p, int s)
 	if (option == DEFAULT_OPTION)
 		option = DECIMAL_OPTION, num = va_arg(*arg, int);
 	else if (option == BINARY_OPTION)
-		num = va_arg(*arg, int);
+		num = va_arg(*arg, long int);
 	else if (option == UNSIGNED_OPTION)
 		num2 = va_arg(*arg, u_i), option = DECIMAL_OPTION;
 	else if (option == OCTAL_OPTION || option == HEX_OPTION ||
