@@ -165,25 +165,34 @@ int print_case_int(va_list *arg, int option, int f, int w, int p, int s)
 			 option == CAPPED_HEX_OPTION)
 		num = va_arg(*arg, int);
 	if (num < 0)
-		num *= -1, is_neg = 1;
-	if (option != UNSIGNED_OPTION && s)
+		{
+			if (option == DEFAULT_OPTION)
+				num *= -1, is_neg = 1;
+		}
+	if (option != DECIMAL_OPTION)
 	{
-		if (s == LONG_SIZE)
-			temp = itoa((u_l_i)num, temp, option);
-		if (s == SHORT_SIZE)
-			temp = itoa((u_s_i)num, temp, option);
+		if (s)
+		{
+			if (s == LONG_SIZE)
+				temp = itoa((u_l_i)num, temp, option);
+			if (s == SHORT_SIZE)
+				temp = itoa((u_s_i)num, temp, option);
+		}
+		else
+			temp = itoa(num, temp, option);
 	}
-	else if (option == UNSIGNED_OPTION && s)
+	else if (option == DECIMAL_OPTION)
 	{
-		if (s == LONG_SIZE)
-			temp = itoa((u_l_i)num2, temp, option);
-		if (s == SHORT_SIZE)
-			temp = itoa((u_s_i)num2, temp, option);
+		if (s)
+		{
+			if (s == LONG_SIZE)
+				temp = itoa((u_l_i)num2, temp, option);
+			if (s == SHORT_SIZE)
+				temp = itoa((u_s_i)num2, temp, option);
+		}
+		else
+			temp = itoa(num2, temp, option);
 	}
-	else if (option != UNSIGNED_OPTION && !s)
-		temp = itoa(num, temp, option);
-	else if (option == UNSIGNED_OPTION && !s)
-		temp = itoa(num2, temp, option);
 	if (option == CAPPED_HEX_OPTION)
 		capitalise_chars(temp);
 	len += print_integer(temp, is_neg, f, w, p);
