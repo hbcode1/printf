@@ -149,7 +149,7 @@ int print_integer(char *str, int is_neg, int f, int w, int p)
 int print_case_int(va_list *arg, int option, int f, int w, int p, int s)
 {
 	long int num = 0, len = 0, is_neg = 0;
-	u_i num2 = 0;
+	u_l_i num2 = 0;
 	char *temp;
 
 	temp = malloc(sizeof(char) * 100);
@@ -169,16 +169,16 @@ int print_case_int(va_list *arg, int option, int f, int w, int p, int s)
 	if (option != UNSIGNED_OPTION && s)
 	{
 		if (s == LONG_SIZE)
-			temp = itoa((l_u_i)num, temp, option);
+			temp = itoa((u_l_i)num, temp, option);
 		if (s == SHORT_SIZE)
-			temp = itoa((s_u_i)num, temp, option);
+			temp = itoa((u_s_i)num, temp, option);
 	}
 	else if (option == UNSIGNED_OPTION && s)
 	{
 		if (s == LONG_SIZE)
-			temp = itoa((l_u_i)num2, temp, option);
+			temp = itoa((u_l_i)num2, temp, option);
 		if (s == SHORT_SIZE)
-			temp = itoa((s_u_i)num2, temp, option);
+			temp = itoa((u_s_i)num2, temp, option);
 	}
 	else if (option != UNSIGNED_OPTION && !s)
 		temp = itoa(num, temp, option);
@@ -187,6 +187,7 @@ int print_case_int(va_list *arg, int option, int f, int w, int p, int s)
 	if (option == CAPPED_HEX_OPTION)
 		capitalise_chars(temp);
 	len += print_integer(temp, is_neg, f, w, p);
+	free(temp);
 	return (len);
 }
 /**

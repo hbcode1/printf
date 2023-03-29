@@ -17,11 +17,11 @@ int print_case_ptr(va_list *arg, int option, int f, int w, int p, int s)
 	int len = 0, i = 0;
 	char *temp = "", *hex = "";
 	void *ptr;
-	l_u_i addr;
+	u_l_i addr;
 	(void)option, (void)p, (void)s;
 
 	ptr = va_arg(*arg, void *);
-	addr = (l_u_i)ptr;
+	addr = (u_l_i)ptr;
 
 	hex = malloc(sizeof(char) * 17);
 	if (hex == NULL)

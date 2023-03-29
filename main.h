@@ -63,13 +63,13 @@ typedef struct _flag
  */
 typedef unsigned int u_i;
 /**
- * l_u_i - typedef for long unsigned int
+ * u_l_i - typedef for long unsigned int
  */
-typedef unsigned long int l_u_i;
+typedef unsigned long int u_l_i;
 /**
- * s_u_i - typedef for short unsigned int
+ * u_s_i - typedef for short unsigned int
  */
-typedef unsigned short int s_u_i;
+typedef unsigned short int u_s_i;
 
 /* String manipulators*/
 void rev_str(char *str, int a, int z);
@@ -84,7 +84,7 @@ int print_case_char(va_list *arg, int option, int f, int w, int p, int s);
 int print_case_str(va_list *arg, int option, int f, int w, int p, int s);
 
 /*Task 1*/
-char *itoa(l_u_i n, char *str, int b);
+char *itoa(u_l_i n, char *str, int b);
 int print_case_int(va_list *arg, int option, int f, int w, int p, int s);
 
 /*Task 4*/
