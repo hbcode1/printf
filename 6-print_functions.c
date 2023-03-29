@@ -15,7 +15,7 @@
 int print_case_ptr(va_list *arg, int option, int f, int w, int p, int s)
 {
 	int len = 0, i = 0;
-	char *temp = "", *hex = "";
+	char *temp, *hex;
 	void *ptr;
 	u_l_i addr;
 	(void)option, (void)p, (void)s;
@@ -37,14 +37,15 @@ int print_case_ptr(va_list *arg, int option, int f, int w, int p, int s)
 	}
 	if (!w && !f && !i) /* just for checks and compilation purposes*/
 	{
-		itoa(addr, hex, 16);
+		temp = itoa(addr, hex, 16);
 		len += _putchar('0');
 		len += _putchar('x');
-		while (*hex != '\0')
+		while (*temp != '\0')
 		{
-			len += _putchar(*hex);
-			hex++;
+			len += _putchar(*temp);
+			temp++;
 		}
 	}
+	free(hex);
 	return (len);
 }

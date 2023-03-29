@@ -15,10 +15,6 @@ int print_case_cstr(va_list *arg, int option, int f, int w, int p, int s)
 	char *temp, *hex;
 	int len = 0;
 	(void)p, (void)s;
-
-	hex = malloc(sizeof(char) * 10);
-	if (hex == NULL)
-		return (0);
 	temp = va_arg(*arg, char *);
 	/*for checking purposes, must be changed in future*/
 	if (option == 3 && !f && !w)
@@ -35,7 +31,7 @@ int print_case_cstr(va_list *arg, int option, int f, int w, int p, int s)
 				{
 					len += _putchar('0');
 				}
-				itoa(*temp, hex, 17);
+				hex = itoa(*temp, hex, 17);
 				{
 					while (*hex != '\0')
 					{
