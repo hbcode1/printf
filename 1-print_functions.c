@@ -148,8 +148,8 @@ int print_integer(char *str, int is_neg, int f, int w, int p)
  */
 int print_case_int(va_list *arg, int option, int f, int w, int p, int s)
 {
-	int num = 0, len = 0, is_neg = 0;
-	unsigned int num2 = 0;
+	long int num = 0, len = 0, is_neg = 0;
+	u_i num2 = 0;
 	char *temp;
 
 	temp = malloc(sizeof(char) * 100);
@@ -160,7 +160,7 @@ int print_case_int(va_list *arg, int option, int f, int w, int p, int s)
 	else if (option == BINARY_OPTION)
 		num = va_arg(*arg, int);
 	else if (option == UNSIGNED_OPTION)
-		num2 = va_arg(*arg, unsigned int), option = DECIMAL_OPTION;
+		num2 = va_arg(*arg, u_i), option = DECIMAL_OPTION;
 	else if (option == OCTAL_OPTION || option == HEX_OPTION ||
 			 option == CAPPED_HEX_OPTION)
 		num = va_arg(*arg, int);
