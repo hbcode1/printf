@@ -25,8 +25,6 @@ int print_case_char(va_list *arg, int option, int f, int w, int p, int s)
 	(void)p, (void)s, (void)option;
 
 	c = va_arg(*arg, int);
-	if (c == 0)
-		return (-1);
 
 	if (w > 1 && (f & FLAGS_MINUS || f & FLAGS_NONE))
 		len += _putchar(c) + print_padding(padding, w - 1);

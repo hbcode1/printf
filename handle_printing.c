@@ -48,6 +48,7 @@ int handle_printing(const char *format, int *index,
 			return (1);
 		}
 		len += _putchar(format[i]);
+		len += _putchar(format[i + 1]);
 	}
 
 	return (len);
