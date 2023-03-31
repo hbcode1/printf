@@ -166,7 +166,7 @@ int print_case_int(va_list *arg, int option, int f, int w, int p, int s)
 		num = va_arg(*arg, int);
 	if (num < 0)
 		{
-			if (option == DEFAULT_OPTION)
+			if (option == DECIMAL_OPTION || option == UNSIGNED_OPTION)
 				num *= -1, is_neg = 1;
 		}
 	if (option != DECIMAL_OPTION || option != DEFAULT_OPTION)
