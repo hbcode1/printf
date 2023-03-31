@@ -169,7 +169,7 @@ int print_case_int(va_list *arg, int option, int f, int w, int p, int s)
 			if (option == DEFAULT_OPTION)
 				num *= -1, is_neg = 1;
 		}
-	if (option != DECIMAL_OPTION)
+	if (option != DECIMAL_OPTION || option != DEFAULT_OPTION)
 	{
 		if (s)
 		{
@@ -181,7 +181,7 @@ int print_case_int(va_list *arg, int option, int f, int w, int p, int s)
 		else
 			temp = itoa(num, temp, option);
 	}
-	else if (option == DECIMAL_OPTION)
+	else if (option == DECIMAL_OPTION || option == DEFAULT_OPTION)
 	{
 		if (s)
 		{
