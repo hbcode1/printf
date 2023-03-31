@@ -155,43 +155,72 @@ int print_case_int(va_list *arg, int option, int f, int w, int p, int s)
 	temp = malloc(sizeof(char) * 100);
 	if (temp == NULL)
 		return (0);
+
 	if (option == DEFAULT_OPTION)
-		option = DECIMAL_OPTION, num = va_arg(*arg, int);
-	else if (option == BINARY_OPTION)
-		num = va_arg(*arg, long int);
-	else if (option == UNSIGNED_OPTION)
-		num2 = va_arg(*arg, u_i), option = DECIMAL_OPTION;
-	else if (option == OCTAL_OPTION || option == HEX_OPTION ||
-			 option == CAPPED_HEX_OPTION)
+	{
+		num = va_arg(*arg, int), option = 10;
+		if (num < 0)
+			num *= -1, is_neg = 1;
+	}
+	if (option == OCTAL_OPTION || option == HEX_OPTION || option == CAPPED_HEX_OPTION)
+	{
 		num = va_arg(*arg, int);
-	if (num < 0)
-		{
-			if (option == DECIMAL_OPTION || option == UNSIGNED_OPTION)
-				num *= -1, is_neg = 1;
-		}
-	if (option != DECIMAL_OPTION || option != DEFAULT_OPTION)
+	}
+	else if (option == BINARY_OPTION)
+	{
+		num = va_arg(*arg, long int);
+	}
+	else if (option == UNSIGNED_OPTION)
+	{
+		num = va_arg(*arg, u_i), option = 10;
+	}
+	if (option == DECIMAL_OPTION)
 	{
 		if (s)
 		{
 			if (s == LONG_SIZE)
-				temp = itoa((u_l_i)num, temp, option);
+				temp = litoa((u_l_i)num, temp, option);
+			if (s == SHORT_SIZE)
+				temp = litoa((u_s_i)num, temp, option);
+		}
+		else
+			temp = litoa(num, temp, option);
+	}
+	else if (option == BINARY_OPTION)
+	{
+		if (s)
+		{
+			if (s == LONG_SIZE)
+				temp = litoa((u_l_i)num, temp, option);
+			if (s == SHORT_SIZE)
+				temp = litoa((u_s_i)num, temp, option);
+		}
+		else
+			temp = litoa(num, temp, option);
+	}
+	else if (option == OCTAL_OPTION || option == HEX_OPTION || option == CAPPED_HEX_OPTION)
+	{
+		if (s)
+		{
+			if (s == LONG_SIZE)
+				temp = litoa((u_l_i)num, temp, option);
 			if (s == SHORT_SIZE)
 				temp = itoa((u_s_i)num, temp, option);
 		}
 		else
 			temp = itoa(num, temp, option);
 	}
-	else if (option == DECIMAL_OPTION || option == DEFAULT_OPTION)
+	else if (option == UNSIGNED_OPTION)
 	{
 		if (s)
 		{
 			if (s == LONG_SIZE)
-				temp = itoa((u_l_i)num2, temp, option);
+				temp = litoa((u_l_i)num2, temp, option);
 			if (s == SHORT_SIZE)
-				temp = itoa((u_s_i)num2, temp, option);
+				temp = litoa((u_s_i)num2, temp, option);
 		}
 		else
-			temp = itoa(num2, temp, option);
+			temp = litoa(num2, temp, option);
 	}
 	if (option == CAPPED_HEX_OPTION)
 		capitalise_chars(temp);

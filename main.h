@@ -84,7 +84,8 @@ int print_case_char(va_list *arg, int option, int f, int w, int p, int s);
 int print_case_str(va_list *arg, int option, int f, int w, int p, int s);
 
 /*Task 1*/
-char *itoa(u_l_i n, char *str, int b);
+char *litoa(u_l_i n, char *str, int b);
+char *itoa(u_i n, char *str, int b);
 int print_case_int(va_list *arg, int option, int f, int w, int p, int s);
 
 /*Task 4*/

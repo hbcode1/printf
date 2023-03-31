@@ -37,7 +37,7 @@ int print_case_ptr(va_list *arg, int option, int f, int w, int p, int s)
 	}
 	if (!w && !f && !i) /* just for checks and compilation purposes*/
 	{
-		temp = itoa(addr, hex, 16);
+		temp = litoa(addr, hex, 16);
 		len += _putchar('0');
 		len += _putchar('x');
 		while (*temp != '\0')
